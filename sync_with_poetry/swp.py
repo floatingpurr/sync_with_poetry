@@ -120,7 +120,7 @@ def sync_repos(
         new_rev = new_rev_s.split(":", 1)[1].strip()
         lines[idx] = f"{match[1]}rev:{match[2]}{new_rev}{match[5]}{match[6]}"
         print(
-            f"🔄 [{pre_commit_repo.name}] {pre_commit_repo.repo} -> rev: {pre_commit_repo.rev}"
+            f"[{pre_commit_repo.name}] {pre_commit_repo.repo} -> rev: {pre_commit_repo.rev}"
         )
         retv |= 1
 
