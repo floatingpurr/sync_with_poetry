@@ -1,0 +1,6 @@
+- id: sync_with_poetry
+  name: Sync with Poetry
+  description: Automatically sync pre-commit repos with package versions in poetry.lock
+  entry: swp
+  language: python
+  files: poetry.lock

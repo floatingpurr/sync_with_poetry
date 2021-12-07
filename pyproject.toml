@@ -1,0 +1,61 @@
+[tool.poetry]
+authors = ["Andrea <floatingpurr@users.noreply.github.com>"]
+description = ""
+name = "sync_with_poetry"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+PyYAML = "^6.0"
+pre-commit = "^2.15.0"
+python = "^3.7"
+tomlkit = "^0.7.2"
+types-PyYAML = "^6.0.1"
+
+[tool.poetry.dev-dependencies]
+black = "^21.12b0"
+flake8 = "^4.0.1"
+mypy = "^0.910"
+pytest = "^6.2"
+pytest-cov = "^3.0.0"
+
+[tool.poetry.scripts]
+swp = "sync_with_poetry.swp:main"
+
+[tool.pytest.ini_options]
+addopts = "-svv"
+testpaths = ["tests"]
+
+[tool.black]
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.pytest_cache
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | tests/.*/setup.py
+)/
+'''
+include = '\.pyi?$'
+line-length = 88
+
+[tool.mypy]
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+explicit_package_bases = true
+files = ["**/*.py"]
+namespace_packages = true
+show_error_codes = true
+
+[tool.isort]
+profile = "black"
+src_paths = ["sync_with_poetry", "tests"]
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]

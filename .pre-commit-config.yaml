@@ -1,0 +1,50 @@
+minimum_pre_commit_version: 2.15.0
+
+repos:
+  # sync (use this repo code)
+  - repo: local
+    hooks:
+      - id: sync
+        name: sync with poetry
+        entry: swp
+        language: system
+        # need to be explicit since we are not using .pre-commit-hooks.yaml here
+        files: poetry.lock
+
+  # general checks (see here: https://pre-commit.com/hooks.html)
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-added-large-files
+      - id: check-json
+      - id: check-case-conflict
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+      - id: check-toml
+
+  # black - formatting
+  - repo: https://github.com/psf/black
+    rev: 21.12b0
+    hooks:
+      - id: black
+
+  # isort - sorting imports
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+
+  # flake8 - linting
+  - repo: https://github.com/pycqa/flake8
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+
+  # mypy - lint-like type cheking
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.910
+    hooks:
+      - id: mypy
+        language: system
