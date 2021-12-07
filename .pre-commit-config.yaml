@@ -47,4 +47,4 @@ repos:
     rev: v0.910
     hooks:
       - id: mypy
-        language: system
+        additional_dependencies: [types-pyyaml==6.0.1]
