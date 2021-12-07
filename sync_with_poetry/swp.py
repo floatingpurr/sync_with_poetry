@@ -3,6 +3,7 @@ import re
 from string import Template
 from typing import List, Optional, Sequence
 
+import emoji
 import yaml
 from tomlkit.items import AoT
 from tomlkit.toml_file import TOMLFile
@@ -120,7 +121,9 @@ def sync_repos(
         new_rev = new_rev_s.split(":", 1)[1].strip()
         lines[idx] = f"{match[1]}rev:{match[2]}{new_rev}{match[5]}{match[6]}"
         print(
-            f"🔄 [{pre_commit_repo.name}] {pre_commit_repo.repo} -> rev: {pre_commit_repo.rev}"
+            emoji.emojize(
+                f":counterclockwise_arrows_button: [{pre_commit_repo.name}] {pre_commit_repo.repo} -> rev: {pre_commit_repo.rev}"
+            )
         )
         retv |= 1
 
