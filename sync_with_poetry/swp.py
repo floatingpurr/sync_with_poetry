@@ -90,7 +90,7 @@ def sync_repos(
     assert isinstance(content["package"], AoT)
     poetry_items = PoetryItems(content["package"], all, skip)
 
-    with open(config, "r") as stream:
+    with open(config, "r", encoding="utf-8") as stream:
         pre_commit_data = yaml.safe_load(stream)
 
     repo_pattern = []
@@ -98,7 +98,7 @@ def sync_repos(
         if "rev" in repo:  # skip `repo: local`
             repo_pattern.append(poetry_items.get_by_repo(repo["repo"]))
 
-    with open(config, newline="") as f:
+    with open(config, newline="", encoding="utf-8") as f:
         original = f.read()
 
     lines = original.splitlines(True)
@@ -124,7 +124,7 @@ def sync_repos(
         )
         retv |= 1
 
-    with open(config, "w", newline="") as f:
+    with open(config, "w", newline="", encoding="utf-8") as f:
         f.write("".join(lines))
     return retv
 

@@ -80,7 +80,7 @@ def get_repo_version(filename: str, repo: str) -> Optional[str]:
         Optional[str]: the version of the repo
     """
 
-    with open(filename, "r") as stream:
+    with open(filename, "r", encoding="utf-8") as stream:
         pre_commit_data = yaml.safe_load(stream)
 
     pre_config_repo = next(
