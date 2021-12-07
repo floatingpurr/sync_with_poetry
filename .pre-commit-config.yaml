@@ -47,4 +47,4 @@ repos:
     rev: v0.910
     hooks:
       - id: mypy
-        additional_dependencies: [types-pyyaml==6.0.1, types-emoji==1.2.6]
+        additional_dependencies: [types-pyyaml==6.0.1]

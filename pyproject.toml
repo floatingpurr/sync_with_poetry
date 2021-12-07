@@ -11,8 +11,6 @@ PyYAML = "^6.0"
 pre-commit = "^2.15.0"
 tomlkit = "^0.7.2"
 types-PyYAML = "^6.0.1"
-emoji = "^1.6.1"
-types-emoji = "^1.2.6"
 
 [tool.poetry.dev-dependencies]
 black = "^21.12b0"
