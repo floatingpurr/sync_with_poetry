@@ -6,7 +6,7 @@ repos:
     hooks:
       - id: sync
         name: sync with poetry
-        entry: swp
+        entry: poetry run swp
         language: system
         # need to be explicit since we are not using .pre-commit-hooks.yaml here
         files: poetry.lock
