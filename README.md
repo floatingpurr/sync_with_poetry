@@ -91,20 +91,20 @@ specify how to map a package to the corresponding repo, following this pattern:
 
 ```python
 {
-    "<package_name_in_PyPy>": {
+    "<package_name_in_PyPI>": {
         "repo": "<repo_url_for_the_package>",
         "rev": "<revision_template>",
     }
 }
 ```
 
-Sometimes the template of the version number of a package in PyPy differs from
-the one used in the repo `rev`. For example, version `0.910` of `mypy` in PyPy
+Sometimes the template of the version number of a package in PyPI differs from
+the one used in the repo `rev`. For example, version `0.910` of `mypy` in PyPI
 (no pun intended) maps to repo `rev: v0.910`. To make this hook aware of this,
 you need to specify `"v${rev}"` as a `"<revision_template>"`. Use `"${rev}"` if
 package version and repo `rev` follow the same pattern. Sometimes the template
-of the version number of a package in PyPy differs from the one used in the repo
-`rev`. For example, version `0.910` of `mypy` in PyPy (no pun intended) maps to
+of the version number of a package in PyPI differs from the one used in the repo
+`rev`. For example, version `0.910` of `mypy` in PyPI (no pun intended) maps to
 repo `rev: v0.910`. To make this hook aware of the leading `v`, you need to
 specify `"v${rev}"` as a `"<revision_template>"`. Use `"${rev}"` if both the
 package version and the repo `rev` follow the same pattern.
