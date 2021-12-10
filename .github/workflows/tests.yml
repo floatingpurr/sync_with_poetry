@@ -3,11 +3,11 @@ name: Tests
 on:
   push:
     paths-ignore:
-      - "*.md"
+      - "**.md"
 
   pull_request:
     paths-ignore:
-      - "*.md"
+      - "**.md"
 
 jobs:
   test:
