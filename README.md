@@ -5,9 +5,10 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-A .pre-commit hook for keeping in sync `.pre-commit-config.yaml` the repos `rev`
-with the packages version locked into `poetry.lock`. Check out
-[pre-commit.com](https://pre-commit.com/) for more about the main framework.
+A .pre-commit hook for keeping in sync the repos `rev` in
+`.pre-commit-config.yaml` with the packages version locked into `poetry.lock`.
+Check out [pre-commit.com](https://pre-commit.com/) for more about the main
+framework.
 
 ## What problem does this hook solve?
 
