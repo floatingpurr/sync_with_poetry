@@ -11,7 +11,7 @@ repos:
         name: sync with poetry
         entry: poetry run swp
         language: system
-        # need to be explicit since we are not using .pre-commit-hooks.yaml here
+        # need to be explicit with `files`, since we are not using the .pre-commit-hooks.yaml here
         files: poetry.lock
 
   # general checks (see here: https://pre-commit.com/hooks.html)
