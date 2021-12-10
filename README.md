@@ -5,13 +5,23 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-A .pre-commit hook for keeping in sync `.pre-commit-config.yaml` repos `rev` with packages version locked into `poetry.lock`. Check out [pre-commit.com](https://pre-commit.com/) for more about the main framework.
+A .pre-commit hook for keeping in sync `.pre-commit-config.yaml` repos `rev`
+with packages version locked into `poetry.lock`. Check out
+[pre-commit.com](https://pre-commit.com/) for more about the main framework.
 
 ## What problem does this hook solve?
 
-When it comes to Python dependency management, [Poetry](https://python-poetry.org/) is one of the modern solutions to handle project dependencies. [Sometimes](https://stackoverflow.com/q/70127649/4820341), you might want to install dev dependencies locally (e.g., `black`, `flake8`, `isort`, `mypy`, ...) to make your IDE (e.g., VS Code) play nicely with dev packages. This approach usually turns on a live feedback as you code (e.g., suggestions, linting, formatting, errors highlighting). Poetry pins dev packages in `poetry.lock`.
+When it comes to Python dependency management,
+[Poetry](https://python-poetry.org/) is one of the modern solutions to handle
+project dependencies. [Sometimes](https://stackoverflow.com/q/70127649/4820341),
+you might want to install dev dependencies locally (e.g., `black`, `flake8`,
+`isort`, `mypy`, ...) to make your IDE (e.g., VS Code) play nicely with dev
+packages. This approach usually turns on a live feedback as you code (e.g.,
+suggestions, linting, formatting, errors highlighting). Poetry pins dev packages
+in `poetry.lock`.
 
-This hook updates the `rev` of each `repo` in `.pre-commit-config.yaml` with the corresponding package version stored in `poetry.lock`.
+This hook updates the `rev` of each `repo` in `.pre-commit-config.yaml` with the
+corresponding package version stored in `poetry.lock`.
 
 E.g., starting from the following files:
 
@@ -67,13 +77,16 @@ Excerpt from a `.pre-commit-config.yaml` using an example of this hook:
   --skip [SKIP ...]  Packages to skip
 ```
 
-Usually this hook uses only dev packages to sync the hooks. Pass `--all`, if you want to consider also the main project packages.
+Usually this hook uses only dev packages to sync the hooks. Pass `--all`, if you
+want to consider also the main project packages.
 
-Pass `--skip <package_1> <package_2> ...` to disable the automatic synchronization of the repos such packages correspond to.
+Pass `--skip <package_1> <package_2> ...` to disable the automatic
+synchronization of the repos such packages correspond to.
 
 ## Supported packages
 
-Supported packages are listed in [`db.py`](sync_with_poetry/db.py). Entries specify how to map a package to the corresponding repo, following this pattern:
+Supported packages are listed in [`db.py`](sync_with_poetry/db.py). Entries
+specify how to map a package to the corresponding repo, following this pattern:
 
 ```python
 {
@@ -84,11 +97,24 @@ Supported packages are listed in [`db.py`](sync_with_poetry/db.py). Entries spec
 }
 ```
 
-Sometimes the template of the version number of a package in PyPy differs from the one used in the repo `rev`. For example, version `0.910` of `mypy` in PyPy (no pun intended) maps to repo `rev: v0.910`. To make this hook aware of this, you need to specify `"v${rev}"` as a `"<revision_template>"`. Use `"${rev}"` if package version and repo `rev` follow the same pattern.
-Sometimes the template of the version number of a package in PyPy differs from the one used in the repo `rev`. For example, version `0.910` of `mypy` in PyPy (no pun intended) maps to repo `rev: v0.910`. To make this hook aware of the leading `v`, you need to specify `"v${rev}"` as a `"<revision_template>"`. Use `"${rev}"` if both the package version and the repo `rev` follow the same pattern.
+Sometimes the template of the version number of a package in PyPy differs from
+the one used in the repo `rev`. For example, version `0.910` of `mypy` in PyPy
+(no pun intended) maps to repo `rev: v0.910`. To make this hook aware of this,
+you need to specify `"v${rev}"` as a `"<revision_template>"`. Use `"${rev}"` if
+package version and repo `rev` follow the same pattern. Sometimes the template
+of the version number of a package in PyPy differs from the one used in the repo
+`rev`. For example, version `0.910` of `mypy` in PyPy (no pun intended) maps to
+repo `rev: v0.910`. To make this hook aware of the leading `v`, you need to
+specify `"v${rev}"` as a `"<revision_template>"`. Use `"${rev}"` if both the
+package version and the repo `rev` follow the same pattern.
 
 PRs extending [`db.py`](sync_with_poetry/db.py) are welcome.
 
+## Contributing
+
+See CONTRIBUTING.md.
+
 ## Credits
 
-This hook is inspired by [pre-commit autoupdate](https://pre-commit.com/index.html#pre-commit-autoupdate).
+This hook is inspired by
+[pre-commit autoupdate](https://pre-commit.com/index.html#pre-commit-autoupdate).
