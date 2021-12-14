@@ -49,5 +49,12 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
-      - name: Run tests
-        run: poetry run pytest -svv
+      - name: Run tests outputting producing coverage reports
+        run: pytest -svv --cov=sync_with_poetry --cov-report=xml
+
+      - name: Upload coverage to Codecov
+      - uses: codecov/codecov-action@v2
+        with:
+          name: sync with poetry # optional
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
