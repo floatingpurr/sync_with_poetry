@@ -141,9 +141,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--skip", nargs="*", default=[], help="Packages to skip")
     args = parser.parse_args(argv)
     retv = 0
-    print(args)
     for filename in args.filenames:
-        print(filename)
         retv |= sync_repos(filename, args.all, args.skip)
     return retv
 
