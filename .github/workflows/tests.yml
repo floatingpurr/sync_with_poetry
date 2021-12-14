@@ -21,16 +21,33 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+
       - name: Set Up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
+
       - name: Install and setup Poetry
         run: |
           python -m pip install --upgrade pip
           pip install poetry
-          poetry install
+          poetry config virtualenvs.in-project true
+
+      # See https://docs.github.com/en/actions/advanced-guides/caching-dependencies-to-speed-up-workflows
+      # pip and pipenv are supported by setup-python
+      # poetry is not (https://github.com/actions/setup-python/issues/298)
+      # for poetry you need an ad-hoc solution
+      - name: Set up Poetry cache for Python dependencies
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install dependencies
+        run: poetry install
+
       - name: Run tests
         run: poetry run pytest -svv
