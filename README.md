@@ -113,7 +113,7 @@ PRs extending [`db.py`](sync_with_poetry/db.py) are welcome.
 
 ## Contributing
 
-See CONTRIBUTING.md.
+See [CONTRIBUTING.md](.github/CONTRIBUTING.md).
 
 ## Credits
 
