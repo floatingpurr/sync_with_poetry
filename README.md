@@ -11,7 +11,7 @@ A .pre-commit hook for keeping in sync the repos `rev` in
 Check out [pre-commit.com](https://pre-commit.com/) for more about the main
 framework.
 
-## What problem does this hook solve?
+## What problem does this hook help us solve?
 
 When it comes to Python dependency management,
 [Poetry](https://python-poetry.org/) is one of the modern solutions to handle
