@@ -42,6 +42,7 @@ jobs:
       # for poetry you need an ad-hoc solution
       - name: Set up Poetry cache for Python dependencies
         uses: actions/cache@v2
+        if: matrix.os != 'windows' || matrix.python-version != 3.6
         with:
           path: .venv
           key: venv-${{ runner.os }}-${{ matrix.python-version }}-fix-${{ hashFiles('**/poetry.lock') }}
