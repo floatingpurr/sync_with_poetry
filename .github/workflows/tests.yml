@@ -45,7 +45,7 @@ jobs:
         if: matrix.os != 'windows' || matrix.python-version != 3.6
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ matrix.python-version }}-fix-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ matrix.python-version }}-f-${{ hashFiles('**/poetry.lock') }}
 
       - name: Install dependencies
         run: poetry install
