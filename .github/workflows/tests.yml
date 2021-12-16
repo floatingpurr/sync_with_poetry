@@ -16,7 +16,7 @@ on:
       - "**.md"
 
 jobs:
-  test:
+  Testing:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
