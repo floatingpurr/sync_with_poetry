@@ -56,7 +56,7 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
-      - name: Run tests outputting producing coverage reports
+      - name: Run tests with coverage
         run: poetry run pytest -svv --cov=./ --cov-report=xml
 
       - name: Upload coverage to Codecov
