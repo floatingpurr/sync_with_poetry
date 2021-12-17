@@ -3,7 +3,6 @@ branch = True
 omit =
     tests/*
 
-
 [report]
 exclude_lines =
     if __name__
