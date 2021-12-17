@@ -14,10 +14,10 @@ types-PyYAML = "^6.0.1"
 [tool.poetry.dev-dependencies]
 black = {version = "^21.12b0", python = "^3.6.2"}
 flake8 = "^4.0.1"
-mypy = "^0.910"
 pre-commit = {version = "^2.15.0", python = "^3.6.1"}
 pytest = "^6.2"
 pytest-cov = "^3.0.0"
+mypy = "^0.920"
 
 [tool.poetry.scripts]
 swp = "sync_with_poetry.swp:main"
