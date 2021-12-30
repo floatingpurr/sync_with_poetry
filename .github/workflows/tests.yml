@@ -53,8 +53,8 @@ jobs:
           path: .venv
           key: venv-${{ runner.os }}-${{ matrix.python-version }}-f-${{ hashFiles('**/poetry.lock') }}
 
-      - name: Install dependencies (no dev)
-        run: poetry install --no-dev
+      - name: Install dependencies
+        run: poetry install
 
       - name: Run tests with coverage
         run: poetry run pytest -svv --cov=./ --cov-report=xml
