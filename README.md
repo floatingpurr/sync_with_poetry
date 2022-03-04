@@ -86,8 +86,8 @@ want to consider also the main project packages.
 Pass `--skip <package_1> <package_2> ...` to disable the automatic
 synchronization of the repos such packages correspond to.
 
-Pass `--config=<path>` to point to a .pre-commit-config.yaml file that is not 
-located at the project root and/or named differently. 
+Pass `--config=<path>` to point to a .pre-commit-config.yaml file that is not
+located at the project root and/or named differently.
 
 ## Supported packages
 

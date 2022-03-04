@@ -139,7 +139,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     )
     # See how to pass a list here: https://github.com/pre-commit/pre-commit/issues/971ß
     parser.add_argument("--skip", nargs="*", default=[], help="Packages to skip")
-    parser.add_argument("--config", type=str, default=YAML_FILE, help="Path to the .pre-commit-config.yaml file")
+    parser.add_argument(
+        "--config",
+        type=str,
+        default=YAML_FILE,
+        help="Path to the .pre-commit-config.yaml file",
+    )
     args = parser.parse_args(argv)
     retv = 0
     for filename in args.filenames:
