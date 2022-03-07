@@ -74,10 +74,10 @@ Excerpt from a `.pre-commit-config.yaml` using an example of this hook:
 
 ### Args
 
-```bash
+```
   --all              Scan all dependencies in poetry.lock (main and dev)
   --skip [SKIP ...]  Packages to skip
-  --config           Path to the .pre-commit-config.yaml file
+  --config CONFIG    Path to a custom .pre-commit-config.yaml file
 ```
 
 Usually this hook uses only dev packages to sync the hooks. Pass `--all`, if you
@@ -86,8 +86,8 @@ want to scan also the main project packages.
 Pass `--skip <package_1> <package_2> ...` to disable the automatic
 synchronization of the repos such packages correspond to.
 
-Pass `--config CONFIG` to point to an alternative config file (it defaults to
-`.pre-commit-config.yaml`).
+Pass `--config <config_file>` to point to an alternative config file (it
+defaults to `.pre-commit-config.yaml`).
 
 ## Supported packages
 
