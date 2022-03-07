@@ -81,13 +81,13 @@ Excerpt from a `.pre-commit-config.yaml` using an example of this hook:
 ```
 
 Usually this hook uses only dev packages to sync the hooks. Pass `--all`, if you
-want to consider also the main project packages.
+want to scan also the main project packages.
 
 Pass `--skip <package_1> <package_2> ...` to disable the automatic
 synchronization of the repos such packages correspond to.
 
-Pass `--config=<path>` to point to a .pre-commit-config.yaml file that is not
-located at the project root and/or named differently.
+Pass `--config CONFIG` to point to an alternative config file (it defaults to
+`.pre-commit-config.yaml`).
 
 ## Supported packages
 
