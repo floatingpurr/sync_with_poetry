@@ -137,7 +137,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         action="store_true",
         help="Scan all dependencies in poetry.lock (main and dev)",
     )
-    # See how to pass a list here: https://github.com/pre-commit/pre-commit/issues/971ß
+    # See how to pass a list here: https://github.com/pre-commit/pre-commit/issues/971
     parser.add_argument("--skip", nargs="*", default=[], help="Packages to skip")
     parser.add_argument(
         "--config",
