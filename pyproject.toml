@@ -2,7 +2,7 @@
 authors = ["Andrea <floatingpurr@users.noreply.github.com>"]
 description = ""
 name = "sync_with_poetry"
-version = "0.1.1"
+version = "0.2.1"
 
 [tool.poetry.dependencies]
 python = "^3.6"
@@ -13,7 +13,7 @@ tomlkit = "^0.7.2"
 [tool.poetry.dev-dependencies]
 black = {version = "^22.3.0", python = "^3.6.2"}
 flake8 = "^4.0.1"
-mypy = "^0.942"
+mypy = "^0.960"
 pre-commit = {version = "^2.15.0", python = "^3.6.1"}
 pytest = "^6.2"
 pytest-cov = "^3.0.0"

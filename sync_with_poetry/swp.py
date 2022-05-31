@@ -113,14 +113,14 @@ def sync_repos(
 
         assert match is not None
 
-        if pre_commit_repo.rev == match[4]:
+        if pre_commit_repo.rev == match[4].replace('"', "").replace("'", ""):
             continue
 
         new_rev_s = yaml.dump({"rev": pre_commit_repo.rev}, default_style=match[3])
         new_rev = new_rev_s.split(":", 1)[1].strip()
         lines[idx] = f"{match[1]}rev:{match[2]}{new_rev}{match[5]}{match[6]}"
         print(
-            f"[{pre_commit_repo.name}] {pre_commit_repo.repo} -> rev: {pre_commit_repo.rev}"
+            f"[{pre_commit_repo.name}] {pre_commit_repo.repo}pyton -> rev: {pre_commit_repo.rev}"
         )
         retv |= 1
 
