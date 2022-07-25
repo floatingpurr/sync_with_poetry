@@ -57,7 +57,7 @@ CONFIG_CONTENT = (
     "      - id: flake8\n"
     "        args: [--max-line-length=88]\n"
     "  - repo: https://github.com/psf/black\n"
-    "    rev: 21.5b2 # this is a rev\n"
+    "    rev: 20.8b1 # this is a rev\n"
     "    hooks:\n"
     "      - id: black\n"
     "    # another repo\n"
