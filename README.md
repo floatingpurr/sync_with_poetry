@@ -11,6 +11,9 @@ A .pre-commit hook for keeping in sync the repos `rev` in
 Check out [pre-commit.com](https://pre-commit.com/) for more about the main
 framework.
 
+> Do you rely on [PDM](https://github.com/pdm-project/pdm)? See this equivalent
+> sync repo: [sync_with_pdm](https://github.com/floatingpurr/sync_with_pdm).
+
 ## What problem does this hook help us solve?
 
 When it comes to Python dependency management,

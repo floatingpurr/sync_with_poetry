@@ -46,26 +46,26 @@ LEN_CONFIG_CONTENT = CONFIG_CONTENT.count("\n")
             },
             # fmt: on
         ),
-        # sync all dependencies (all = True)
+        # sync all dependencies (all = True), skipping `flake8` (dev) and black (main)
         (
-            {"all": True, "skip": []},
+            {"all": True, "skip": ["black", "flake8"]},
             # fmt: off
             {
                 "https://github.com/pre-commit/mirrors-mypy": "v0.910",     # bumped (dev)
-                "https://github.com/pycqa/flake8": "4.0.1",                 # bumped (dev)
-                "https://github.com/psf/black": "21.11b1",                  # bumped (main)
+                "https://github.com/pycqa/flake8": "3.9.0",                 # not bumped (dev), skipped
+                "https://github.com/psf/black": "20.8b1",                   # not bumped (main), skipped
                 "https://github.com/pycqa/isort": "5.10.1",                 # not managed by Poetry
             },
             # fmt: on
         ),
-        # sync dev dependencies, skipping `black` and  `flake8`
+        # sync dev dependencies, skipping `black` (not applied) and  `flake8`
         (
             {"all": False, "skip": ["black", "flake8"]},
             # fmt: off
             {
                 "https://github.com/pre-commit/mirrors-mypy": "v0.910",     # bumped (dev)
                 "https://github.com/pycqa/flake8": "3.9.0",                 # not bumped (dev), skipped
-                "https://github.com/psf/black": "20.8b1",                   # not bumped (main), skipped
+                "https://github.com/psf/black": "20.8b1",                   # not bumped (main)
                 "https://github.com/pycqa/isort": "5.10.1",                 # not managed by Poetry
             },
             # fmt: on
