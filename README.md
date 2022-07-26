@@ -1,6 +1,6 @@
 # Sync with poetry
 
-[![Tests](https://github.com/floatingpurr/sync_with_poetry/actions/workflows/tests.yml/badge.svg)](https://github.com/floatingpurr/sync_with_poetry/actions/workflows/tests.yml)
+[![CI](https://github.com/floatingpurr/sync_with_poetry/actions/workflows/ci.yml/badge.svg)](https://github.com/floatingpurr/sync_with_poetry/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/floatingpurr/sync_with_poetry/branch/main/graph/badge.svg?token=RNDNWATE25)](https://codecov.io/gh/floatingpurr/sync_with_poetry)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/floatingpurr/sync_with_poetry/main.svg)](https://results.pre-commit.ci/latest/github/floatingpurr/sync_with_poetry/main)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)

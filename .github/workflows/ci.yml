@@ -1,4 +1,4 @@
-name: Tests
+name: CI
 
 on:
   workflow_dispatch:
@@ -14,6 +14,8 @@ on:
       # - '*.x' for latest “.x” branch e.g, (0.1.x)
     paths-ignore:
       - "**.md"
+  release:
+    types: [published]
 
 jobs:
   Testing:
