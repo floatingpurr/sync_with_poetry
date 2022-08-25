@@ -23,4 +23,8 @@ DEPENDENCY_MAPPING = {
         "repo": "https://github.com/asottile/pyupgrade",
         "rev": "v${rev}",
     },
+    "flakeheaven": {
+        "repo": "https://github.com/flakeheaven/flakeheaven",
+        "rev": "${rev}",
+    },
 }
