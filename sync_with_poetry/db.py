@@ -35,12 +35,4 @@ DEPENDENCY_MAPPING = {
         "repo": "https://github.com/asottile/pyupgrade",
         "rev": "v${rev}",
     },
-    "bandit": {
-        "repo": "https://github.com/PyCQA/bandit",
-        "rev": "${rev}",
-    },
-    "commitizen": {
-        "repo": "https://github.com/commitizen-tools/commitizen",
-        "rev": "v${rev}",
-    },
 }
