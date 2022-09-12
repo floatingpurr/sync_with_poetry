@@ -2,7 +2,7 @@
 authors = ["Andrea <floatingpurr@users.noreply.github.com>"]
 description = ""
 name = "sync_with_poetry"
-version = "0.3.0"
+version = "0.4.0"
 
 [tool.poetry.dependencies]
 python = "^3.6.1"

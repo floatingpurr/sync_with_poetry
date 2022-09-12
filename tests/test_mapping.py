@@ -14,7 +14,7 @@ URL_REGEX = re.compile(
 )
 
 
-def test_dependency_mapping() -> None:
+def test_built_in_dependency_mapping() -> None:
     """Test the structure of the DEPENDENCY_MAPPING"""
     for item in DEPENDENCY_MAPPING:
         assert type(item) == str

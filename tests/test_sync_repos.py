@@ -2,7 +2,12 @@ import pytest
 from py._path.local import LocalPath
 
 from sync_with_poetry import swp
-from tests.helpers import CONFIG_CONTENT, LOCK_CONTENT, get_repo_version
+from tests.helpers import (
+    CONFIG_CONTENT,
+    LOCK_CONTENT,
+    CUSTOM_DEPENDENCY_MAPPING,
+    get_repo_version,
+)
 
 LEN_CONFIG_CONTENT = CONFIG_CONTENT.count("\n")
 
@@ -67,6 +72,15 @@ LEN_CONFIG_CONTENT = CONFIG_CONTENT.count("\n")
                 "https://github.com/pycqa/flake8": "3.9.0",                 # not bumped (dev), skipped
                 "https://github.com/psf/black": "20.8b1",                   # not bumped (main)
                 "https://github.com/pycqa/isort": "5.10.1",                 # not managed by Poetry
+            },
+            # fmt: on
+        ),
+        # sync dependencies from custom mapping
+        (
+            {"all": False, "skip": [], "db": CUSTOM_DEPENDENCY_MAPPING},
+            # fmt: off
+            {
+                "https://example.org/fakepackages/foobarbaz": "1.0.1",     # bumped (main)
             },
             # fmt: on
         ),

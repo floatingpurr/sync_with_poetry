@@ -32,6 +32,13 @@ LOCK_CONTENT = (
     'category = "dev"\n'
     "optional = false\n"
     'python-versions = ">=3.6"\n'
+    "[[package]]\n"
+    'name = "foobarbaz"\n'
+    'version = "1.0.1"\n'
+    'description = "a dummy package"\n'
+    'category = "dev"\n'
+    "optional = false\n"
+    'python-versions = ">=3.6"\n'
 )
 
 # A .pre-commit-config.yaml file
@@ -66,7 +73,19 @@ CONFIG_CONTENT = (
     "    hooks:\n"
     "      - id: isort\n"
     "        args: [--filter-files]\n"
+    "  - repo: https://example.org/fakepackages/foobarbaz\n"
+    "    rev: 1.0.0\n"
+    "    hooks:\n"
+    "      - id: foobarbaz\n"
 )
+
+
+CUSTOM_DEPENDENCY_MAPPING = {
+    "foobarbaz": {
+        "repo": "https://example.org/fakepackages/foobarbaz",
+        "rev": "${rev}",
+    },
+}
 
 
 def get_repo_version(filename: str, repo: str) -> Optional[str]:

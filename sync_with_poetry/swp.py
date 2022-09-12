@@ -1,4 +1,5 @@
 import argparse
+import json
 import re
 from string import Template
 from typing import List, Optional, Sequence
@@ -31,6 +32,7 @@ class PoetryItems(object):
         poetry_list: AoT,
         all: bool = False,
         skip: List[str] = [],
+        db: dict[str, dict[str, str]] = DEPENDENCY_MAPPING,
     ) -> None:
         """Create a PoetryItems collection
 
@@ -54,7 +56,7 @@ class PoetryItems(object):
             if ((not all) and package["category"] != "dev") or package["name"] in skip:
                 continue
 
-            dependency_mapping = DEPENDENCY_MAPPING.get(package["name"], None)
+            dependency_mapping = db.get(package["name"], None)
 
             if dependency_mapping:
                 name = package["name"]
@@ -79,7 +81,11 @@ class PoetryItems(object):
 
 
 def sync_repos(
-    filename: str, all: bool = False, skip: List[str] = [], config: str = YAML_FILE
+    filename: str,
+    all: bool = False,
+    skip: List[str] = [],
+    config: str = YAML_FILE,
+    db: dict[str, dict[str, str]] = DEPENDENCY_MAPPING,
 ) -> int:
 
     retv = 0
@@ -88,7 +94,7 @@ def sync_repos(
     content = toml.read()
 
     assert isinstance(content["package"], AoT)
-    poetry_items = PoetryItems(content["package"], all, skip)
+    poetry_items = PoetryItems(content["package"], all, skip, db)
 
     with open(config, "r") as stream:
         pre_commit_data = yaml.safe_load(stream)
@@ -145,10 +151,21 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         default=YAML_FILE,
         help="Path to the .pre-commit-config.yaml file",
     )
+    parser.add_argument(
+        "--db",
+        type=str,
+        help="Path to the mapping file",
+    )
     args = parser.parse_args(argv)
+    if args.db is None:
+        mapping = DEPENDENCY_MAPPING
+    else:
+        with open(args.db, "r") as f:
+            mapping = json.load(f)
+
     retv = 0
     for filename in args.filenames:
-        retv |= sync_repos(filename, args.all, args.skip, args.config)
+        retv |= sync_repos(filename, args.all, args.skip, args.config, mapping)
     return retv
 
 
