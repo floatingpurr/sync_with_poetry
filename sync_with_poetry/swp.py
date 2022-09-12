@@ -154,7 +154,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument(
         "--db",
         type=str,
-        help="Path to the mapping file",
+        help="Path to a custom package list (json)",
     )
     args = parser.parse_args(argv)
     if args.db is None:

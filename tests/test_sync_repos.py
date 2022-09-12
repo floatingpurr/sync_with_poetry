@@ -4,8 +4,8 @@ from py._path.local import LocalPath
 from sync_with_poetry import swp
 from tests.helpers import (
     CONFIG_CONTENT,
-    LOCK_CONTENT,
     CUSTOM_DEPENDENCY_MAPPING,
+    LOCK_CONTENT,
     get_repo_version,
 )
 

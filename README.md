@@ -81,6 +81,7 @@ Excerpt from a `.pre-commit-config.yaml` using an example of this hook:
   --all              Scan all dependencies in poetry.lock (main and dev)
   --skip [SKIP ...]  Packages to skip
   --config CONFIG    Path to a custom .pre-commit-config.yaml file
+  --db               Path to a custom package list (json)
 ```
 
 Usually this hook uses only dev packages to sync the hooks. Pass `--all`, if you
@@ -92,30 +93,43 @@ synchronization of the repos such packages correspond to.
 Pass `--config <config_file>` to point to an alternative config file (it
 defaults to `.pre-commit-config.yaml`).
 
+Pass `--db <package_list_file>` to point to an alternative package list (json).
+Such a file overrides the mapping in [`db.py`](sync_with_poetry/db.py).
+
 ## Supported packages
 
-Supported packages are listed in [`db.py`](sync_with_poetry/db.py). Entries
-specify how to map a package to the corresponding repo, following this pattern:
+Supported packages out-of-the-box are listed in
+[`db.py`](sync_with_poetry/db.py):
 
-```python
+- autopep8
+- bandit
+- black
+- commitizen
+- flake8
+- flakeheaven
+- isort
+- mypy
+- pyupgrade
+
+From version `0.4.0`, you can create your very own package list, passing a
+custom json file with the arg `--db`. Such a file specifies how to map a package
+to the corresponding repo, following this pattern:
+
+```json
 {
-    "<package_name_in_PyPI>": {
-        "repo": "<repo_url_for_the_package>",
-        "rev": "<revision_template>",
-    }
+  "<package_name_in_PyPI>": {
+    "repo": "<repo_url_for_the_package>",
+    "rev": "<revision_template>"
+  }
 }
 ```
 
 Sometimes the template of the version number of a package in PyPI differs from
 the one used in the repo `rev`. For example, version `0.910` of `mypy` in PyPI
-(no pun intended) maps to repo `rev: v0.910`. To make this hook aware of this,
-you need to specify `"v${rev}"` as a `"<revision_template>"`. Use `"${rev}"` if
-package version and repo `rev` follow the same pattern. Sometimes the template
-of the version number of a package in PyPI differs from the one used in the repo
-`rev`. For example, version `0.910` of `mypy` in PyPI (no pun intended) maps to
-repo `rev: v0.910`. To make this hook aware of the leading `v`, you need to
-specify `"v${rev}"` as a `"<revision_template>"`. Use `"${rev}"` if both the
-package version and the repo `rev` follow the same pattern.
+(no pun intended) maps to repo `rev: v0.910`. To make this hook aware of the
+leading `v`, you need to specify `"v${rev}"` as a `"<revision_template>"`. Use
+`"${rev}"` if both the package version and the repo `rev` follow the same
+pattern.
 
 PRs extending [`db.py`](sync_with_poetry/db.py) are welcome.
 
