@@ -41,8 +41,10 @@ class PoetryItems(object):
             all (Optional[bool], optional): Set to True to consider all dependencies.
                                             Set to False for dev dependencies only.
                                             Defaults to False.
-            skip (Optional[list], optional): A list of packages to skip. Such packages won't be synchronized in .pre-commit-config.yaml.
+            skip (Optional[list], optional): A list of packages to skip. Such packages won't
+                                             be synchronized in .pre-commit-config.yaml.
                                              Defaults to [].
+            db (Dict[str, Dict[str, str]], optional): A package-repo mapping. Defaults to DEPENDENCY_MAPPING.
         """
 
         self._poetry_list = []
