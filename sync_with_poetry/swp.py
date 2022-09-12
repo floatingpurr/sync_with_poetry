@@ -2,7 +2,7 @@ import argparse
 import json
 import re
 from string import Template
-from typing import List, Optional, Sequence
+from typing import Dict, List, Optional, Sequence
 
 import yaml
 from tomlkit.items import AoT
@@ -32,7 +32,7 @@ class PoetryItems(object):
         poetry_list: AoT,
         all: bool = False,
         skip: List[str] = [],
-        db: dict[str, dict[str, str]] = DEPENDENCY_MAPPING,
+        db: Dict[str, Dict[str, str]] = DEPENDENCY_MAPPING,
     ) -> None:
         """Create a PoetryItems collection
 
@@ -85,7 +85,7 @@ def sync_repos(
     all: bool = False,
     skip: List[str] = [],
     config: str = YAML_FILE,
-    db: dict[str, dict[str, str]] = DEPENDENCY_MAPPING,
+    db: Dict[str, Dict[str, str]] = DEPENDENCY_MAPPING,
 ) -> int:
 
     retv = 0
