@@ -35,4 +35,8 @@ DEPENDENCY_MAPPING = {
         "repo": "https://github.com/asottile/pyupgrade",
         "rev": "v${rev}",
     },
+    "ruff": {
+        "repo": "https://github.com/charliermarsh/ruff-pre-commit",
+        "rev": "v${rev}",
+    },
 }
