@@ -50,7 +50,6 @@ class PoetryItems(object):
         self._poetry_list = []
 
         for package in poetry_list:
-
             # skip
             # if all == False and this package is not a dev dependency
             # or
@@ -89,7 +88,6 @@ def sync_repos(
     config: str = YAML_FILE,
     db: Dict[str, Dict[str, str]] = DEPENDENCY_MAPPING,
 ) -> int:
-
     retv = 0
 
     toml = TOMLFile(filename)
@@ -113,7 +111,6 @@ def sync_repos(
     idxs = [i for i, line in enumerate(lines) if REV_LINE_RE.match(line)]
 
     for idx, pre_commit_repo in zip(idxs, repo_pattern):
-
         if pre_commit_repo is None:
             continue
 
