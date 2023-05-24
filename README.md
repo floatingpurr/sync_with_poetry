@@ -36,7 +36,6 @@ E.g., starting from the following files:
 name = "black"
 version = "21.12b0"
 description = "The uncompromising code formatter."
-category = "dev"
 optional = false
 python-versions = ">=3.6.2"
 ```
@@ -78,7 +77,6 @@ Excerpt from a `.pre-commit-config.yaml` using an example of this hook:
 ### Args
 
 ```
-  --all              Scan all dependencies in poetry.lock (main and dev)
   --skip [SKIP ...]  Packages to skip
   --config CONFIG    Path to a custom .pre-commit-config.yaml file
   --db PACKAGE_LIST  Path to a custom package list (json)
@@ -111,9 +109,9 @@ Supported packages out-of-the-box are listed in
 - mypy
 - pyupgrade
 
-From version `0.4.0`, you can create your very own package list, passing a
-custom json file with the arg `--db`. Such a file specifies how to map a package
-to the corresponding repo, following this pattern:
+You can create your very own package list, passing a custom json file with the
+arg `--db`. Such a file specifies how to map a package to the corresponding
+repo, following this pattern:
 
 ```json
 {
@@ -131,7 +129,8 @@ leading `v`, you need to specify `"v${rev}"` as a `"<revision_template>"`. Use
 `"${rev}"` if both the package version and the repo `rev` follow the same
 pattern.
 
-PRs extending [`db.py`](sync_with_poetry/db.py) are welcome.
+Please, do not open PRs to extend [`db.py`](sync_with_poetry/db.py) anymore. Use
+your personal package list instead.
 
 ## Contributing
 

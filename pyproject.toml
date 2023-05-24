@@ -1,8 +1,8 @@
 [tool.poetry]
-authors = ["Andrea <floatingpurr@users.noreply.github.com>"]
-description = ""
+authors = ["Andrea Mignone <floatingpurr@users.noreply.github.com>"]
+description = "Sync .pre-commit-config.yaml repos starting from poetry.lock"
 name = "sync_with_poetry"
-version = "0.4.0"
+version = "1.0.0"
 
 [tool.poetry.dependencies]
 python = "^3.6.1"
@@ -10,7 +10,7 @@ python = "^3.6.1"
 PyYAML = "^6.0"
 tomlkit = "^0.7.2"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 black = {version = "^22.8.0", python = "^3.6.2"}
 flake8 = "^5.0.4"
 mypy = "^0.971"
