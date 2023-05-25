@@ -49,7 +49,7 @@ jobs:
         run: poetry run pytest -svv --cov=./ --cov-report=xml
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
         with:
           name: sync with poetry # optional
