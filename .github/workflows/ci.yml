@@ -23,12 +23,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.6, 3.7, 3.8, 3.9, "3.10", 3.11]
+        python-version: ["3.6", "3.7", "3.8", "3.9", "3.10", "3.11"]
         os: [ubuntu-latest, macOS-latest, windows-latest]
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set Up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
@@ -48,12 +48,12 @@ jobs:
       # poetry is not (https://github.com/actions/setup-python/issues/298)
       # for poetry you need an ad-hoc solution
       # see https://github.com/python-poetry/poetry/issues/2629 for the problem with win + python3.6
-      - name: Set up Poetry cache for Python dependencies
-        uses: actions/cache@v2
-        if: matrix.os != 'windows-latest'
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ matrix.python-version }}-f-${{ hashFiles('**/poetry.lock') }}
+      # - name: Set up Poetry cache for Python dependencies
+      #   uses: actions/cache@v2
+      #   if: matrix.os != 'windows-latest'
+      #   with:
+      #     path: .venv
+      #     key: venv-${{ runner.os }}-${{ matrix.python-version }}-f-${{ hashFiles('**/poetry.lock') }}
 
       - name: Install dependencies
         run: poetry install
@@ -63,7 +63,7 @@ jobs:
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.10'
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
         with:
           name: sync with poetry # optional
           fail_ci_if_error: true # optional (default = false)

@@ -1,5 +1,5 @@
 [tool.poetry]
-authors = ["Andrea Mignone <floatingpurr@users.noreply.github.com>"]
+authors = ["Andrea Mignone <andrea.mignone@virgilio.it>"]
 description = "Sync .pre-commit-config.yaml repos starting from poetry.lock"
 name = "sync_with_poetry"
 version = "1.0.0"
@@ -59,4 +59,4 @@ src_paths = ["sync_with_poetry", "tests"]
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
