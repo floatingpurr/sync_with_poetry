@@ -8,35 +8,30 @@ LOCK_CONTENT = (
     'name = "mypy"\n'
     'version = "0.910"\n'
     'description = "Optional static typing for Python"\n'
-    'category = "dev"\n'
     "optional = false\n"
     'python-versions = ">=3.5"\n'
     "[[package]]\n"
     'name = "flake8"\n'
     'version = "4.0.1"\n'
     'description = "the modular source code checker: pep8 pyflakes and co"\n'
-    'category = "dev"\n'
     "optional = false\n"
     'python-versions = ">=3.6"\n'
     "[[package]]\n"
     'name = "black"\n'
     'version = "21.11b1"\n'
     'description = "The uncompromising code formatter."\n'
-    'category = "main"\n'
     "optional = false\n"
     'python-versions = ">=3.6.2"\n'
     "[[package]]\n"
     'name = "pytest"\n'
     'version = "6.2.5"\n'
     'description = "pytest: simple powerful testing with Python"\n'
-    'category = "dev"\n'
     "optional = false\n"
     'python-versions = ">=3.6"\n'
     "[[package]]\n"
     'name = "foobarbaz"\n'
     'version = "1.0.1"\n'
     'description = "a dummy package"\n'
-    'category = "dev"\n'
     "optional = false\n"
     'python-versions = ">=3.6"\n'
 )
