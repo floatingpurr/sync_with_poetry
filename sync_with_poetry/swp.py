@@ -35,7 +35,6 @@ class PoetryItems(object):
 
         self._poetry_lock = {}
         for package in poetry_list:
-
             # skip
             if package["name"] in skip:
                 continue
@@ -69,7 +68,6 @@ def sync_repos(
     config: str = YAML_FILE,
     db: Dict[str, Dict[str, str]] = DEPENDENCY_MAPPING,
 ) -> int:
-
     retv = 0
 
     toml = TOMLFile(filename)
@@ -93,7 +91,6 @@ def sync_repos(
     idxs = [i for i, line in enumerate(lines) if REV_LINE_RE.match(line)]
 
     for idx, pre_commit_repo in zip(idxs, repo_pattern):
-
         if pre_commit_repo is None:
             continue
 
