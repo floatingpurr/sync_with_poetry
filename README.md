@@ -22,9 +22,10 @@ project dependencies. [Sometimes](https://stackoverflow.com/q/70127649/4820341),
 you might want to install dev dependencies locally (e.g., `black`, `flake8`,
 `isort`, `mypy`, ...) to make your IDE (e.g., VS Code) play nicely with dev
 packages. This approach usually turns on a live feedback as you code (e.g.,
-suggestions, linting, formatting, errors highlighting). ~~Poetry pins dev
-packages in `poetry.lock`~~ (not anymore, see
-[#26](https://github.com/floatingpurr/sync_with_poetry/issues/26)).
+suggestions, linting, formatting, errors highlighting). Poetry does not
+differentiates anymore between dev and production packages inside `poetry.lock`.
+Now, this info is managed by dependency groups in `pyproject.toml` (see
+[#26](https://github.com/floatingpurr/sync_with_poetry/issues/26) for more).
 
 This hook updates the `rev` of each `repo` in `.pre-commit-config.yaml` with the
 corresponding package version stored in `poetry.lock`.
