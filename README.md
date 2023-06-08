@@ -82,6 +82,7 @@ Excerpt from a `.pre-commit-config.yaml` using an example of this hook:
   --skip [SKIP ...]  Packages to skip
   --config CONFIG    Path to a custom .pre-commit-config.yaml file
   --db PACKAGE_LIST  Path to a custom package list (json)
+  --allow-frozen     Trust `frozen: xxx` comments for frozen revisions.
 ```
 
 Usually this hook uses only dev packages to sync the hooks. Pass `--all`, if you
@@ -95,6 +96,15 @@ defaults to `.pre-commit-config.yaml`).
 
 Pass `--db <package_list_file>` to point to an alternative package list (json).
 Such a file overrides the mapping in [`db.py`](sync_with_poetry/db.py).
+
+Pass `--allow-frozen` if you want to use frozen revisions in your config.
+Without this option _SWP_ will replace frozen revisions with the tag name taken
+from `poetry.lock` even if the frozen revision specifies the same commit as the
+tag. This options relies on `frozen: xxx` comments appended to the line of the
+frozen revision where `xxx` will be the tag name corresponding to the commit
+hash used. If the comment specifies the same revision as the lock file nothing
+is changed. Otherwise the revision is replaced with the expected revision tag
+and the `frozen: xxx` comment is removed.
 
 ## Supported packages
 
