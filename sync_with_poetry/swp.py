@@ -11,7 +11,10 @@ from tomlkit.toml_file import TOMLFile
 from sync_with_poetry.db import DEPENDENCY_MAPPING
 
 YAML_FILE = ".pre-commit-config.yaml"
-REV_LINE_RE = re.compile(r'^(\s+)rev:(\s*)([\'"]?)([^\s#]+)(.*)(\r?\n)$')
+REV_LINE_RE = re.compile(
+    r'^(\s+)rev:(\s*)(?P<quotes>[\'"]?)(?P<rev>[^\s#]+)(?P=quotes)(\s*)(# frozen: (?P<comment>\S+)\b)?(?P<rest>.*?)(?P<eol>\r?\n)$'
+)
+FROZEN_REV_RE = re.compile(r"[a-f\d]{40}")
 
 
 class PoetryItems(object):
@@ -35,7 +38,6 @@ class PoetryItems(object):
 
         self._poetry_lock = {}
         for package in poetry_list:
-
             # skip
             if package["name"] in skip:
                 continue
@@ -68,8 +70,8 @@ def sync_repos(
     skip: List[str] = [],
     config: str = YAML_FILE,
     db: Dict[str, Dict[str, str]] = DEPENDENCY_MAPPING,
+    frozen: bool = False,
 ) -> int:
-
     retv = 0
 
     toml = TOMLFile(filename)
@@ -93,7 +95,6 @@ def sync_repos(
     idxs = [i for i, line in enumerate(lines) if REV_LINE_RE.match(line)]
 
     for idx, pre_commit_repo in zip(idxs, repo_pattern):
-
         if pre_commit_repo is None:
             continue
 
@@ -101,13 +102,27 @@ def sync_repos(
 
         assert match is not None
 
-        if pre_commit_repo["rev"] == match[4].replace('"', "").replace("'", ""):
+        lock_rev = pre_commit_repo["rev"]
+        config_rev = match["rev"].replace('"', "").replace("'", "")
+
+        if frozen and FROZEN_REV_RE.fullmatch(config_rev) and match["comment"]:
+            config_rev = match["comment"]
+
+        if lock_rev == config_rev:
             continue
 
-        new_rev_s = yaml.dump({"rev": pre_commit_repo["rev"]}, default_style=match[3])
+        new_rev_s = yaml.dump({"rev": lock_rev}, default_style=match["quotes"])
         new_rev = new_rev_s.split(":", 1)[1].strip()
-        lines[idx] = f"{match[1]}rev:{match[2]}{new_rev}{match[5]}{match[6]}"
-        print(f"[{pre_commit_repo['name']}] -> rev: {pre_commit_repo['rev']}")
+
+        rest = ""
+        if match["rest"]:
+            rest = match[5] or ""
+            if match["comment"]:
+                rest += "#"
+            rest += match["rest"]
+
+        lines[idx] = f"{match[1]}rev:{match[2]}{new_rev}{rest}{match['eol']}"
+
         retv |= 1
 
     with open(config, "w", newline="") as f:
@@ -132,6 +147,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         help="Path to the .pre-commit-config.yaml file",
     )
     parser.add_argument(
+        "--allow-frozen",
+        action="store_true",
+        dest="frozen",
+        help="Trust `frozen: xxx` comments for frozen revisions. "
+        "If the comment specifies the same revision as the lock file the check passes. "
+        "Otherwise the revision is replaced with expected revision tag.",
+    )
+    parser.add_argument(
         "--db",
         type=str,
         help="Path to a custom package list (json)",
@@ -144,7 +167,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             mapping = json.load(f)
     retv = 0
     for filename in args.filenames:
-        retv |= sync_repos(filename, args.skip, args.config, mapping)
+        retv |= sync_repos(
+            filename, args.skip, args.config, mapping, frozen=args.frozen
+        )
     return retv
 
 
