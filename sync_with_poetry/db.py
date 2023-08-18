@@ -36,7 +36,7 @@ DEPENDENCY_MAPPING = {
         "rev": "v${rev}",
     },
     "ruff": {
-        "repo: "https://github.com/astral-sh/ruff-pre-commit",
+        "repo": "https://github.com/astral-sh/ruff-pre-commit",
         "rev": "v${rev}",
     },
 }
