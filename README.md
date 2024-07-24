@@ -69,8 +69,8 @@ repos:
 Excerpt from a `.pre-commit-config.yaml` using an example of this hook:
 
 ```yaml
-- repo: https://github.com/floatingpurr/sync_with_poetry
-  rev: "" # the revision or tag to clone at
+- repo: https://github.com/dribia/sync_with_poetry
+  rev: "v0.1.0" # the revision or tag to clone at
   hooks:
     - id: sync_with_poetry
       args: [] # optional args
