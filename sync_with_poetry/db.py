@@ -39,4 +39,8 @@ DEPENDENCY_MAPPING = {
         "repo": "https://github.com/astral-sh/ruff-pre-commit",
         "rev": "v${rev}",
     },
+    "sqlfluff": {
+        "repo": "https://github.com/sqlfluff/sqlfluff",
+        "rev": "${rev}",
+    },
 }
