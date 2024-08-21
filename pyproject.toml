@@ -2,7 +2,7 @@
 authors = ["Andrea Mignone <andrea.mignone@virgilio.it>"]
 description = "Sync .pre-commit-config.yaml repos starting from poetry.lock"
 name = "sync_with_poetry"
-version = "1.0.0"
+version = "0.2.0"
 
 [tool.poetry.dependencies]
 python = "^3.6.1"
