@@ -1,7 +1,7 @@
 # Sync with poetry
 
 [![CI](https://github.com/floatingpurr/sync_with_poetry/actions/workflows/ci.yml/badge.svg)](https://github.com/floatingpurr/sync_with_poetry/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/floatingpurr/sync_with_poetry/branch/main/graph/badge.svg?token=RNDNWATE25)](https://codecov.io/gh/floatingpurr/sync_with_poetry)
+[![codecov](https://codecov.io/gh/floatingpurr/sync_with_poetry/graph/badge.svg?token=T1KUB0CUON)](https://codecov.io/gh/floatingpurr/sync_with_poetry)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/floatingpurr/sync_with_poetry/main.svg)](https://results.pre-commit.ci/latest/github/floatingpurr/sync_with_poetry/main)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
@@ -120,6 +120,7 @@ Supported packages out-of-the-box are listed in
 - isort
 - mypy
 - pyupgrade
+- ruff
 
 You can create your very own package list, passing a custom json file with the
 arg `--db`. Such a file specifies how to map a package to the corresponding
