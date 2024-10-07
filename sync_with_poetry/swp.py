@@ -47,9 +47,7 @@ class PoetryItems(object):
             if dependency_mapping:
                 name = package["name"]
                 repo = dependency_mapping["repo"]
-                rev = Template(dependency_mapping["rev"]).substitute(
-                    rev=package["version"]
-                )
+                rev = Template(dependency_mapping["rev"]).substitute(rev=package["version"])
                 self._poetry_lock[repo] = {"name": name, "rev": rev}
 
     def get_by_repo(self, repo: str) -> Optional[Dict[str, str]]:
@@ -167,9 +165,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             mapping = json.load(f)
     retv = 0
     for filename in args.filenames:
-        retv |= sync_repos(
-            filename, args.skip, args.config, mapping, frozen=args.frozen
-        )
+        retv |= sync_repos(filename, args.skip, args.config, mapping, frozen=args.frozen)
     return retv
 
 

@@ -9,7 +9,7 @@ def test_poetry_items_creation() -> None:
     content = tomlkit.loads(LOCK_CONTENT)
     assert isinstance(content["package"], tomlkit.items.AoT)
     p = PoetryItems(content["package"])
-    assert type(p._poetry_lock) == dict
+    assert type(p._poetry_lock) is dict
 
 
 def test_poetry_items_metadata() -> None:
@@ -18,6 +18,6 @@ def test_poetry_items_metadata() -> None:
     assert isinstance(content["package"], tomlkit.items.AoT)
     p = PoetryItems(content["package"])
     item = p.get_by_repo("https://github.com/pre-commit/mirrors-mypy")
-    assert type(item) == dict
+    assert type(item) is dict
     assert item["name"] == "mypy"
     assert item["rev"] == "v0.910"

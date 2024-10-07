@@ -1,3 +1,0 @@
-[flake8]
-# project wide config
-ignore = E501

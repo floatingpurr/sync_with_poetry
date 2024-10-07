@@ -5,13 +5,12 @@ name = "sync_with_poetry"
 version = "1.0.0"
 
 [tool.poetry.dependencies]
-python = "^3.6.1"
+python = ">=3.9"
 
-PyYAML = "^6.0"
+PyYAML = "^6.0.1"
 tomlkit = "^0.7.2"
 
 [tool.poetry.group.dev.dependencies]
-black = {version = "^22.8.0", python = "^3.6.2"}
 coverage = [
   {extras = [
     "toml",
@@ -20,11 +19,11 @@ coverage = [
     "toml",
   ], version = ">=6.5", python = ">=3.7"},
 ]
-flake8 = "^5.0.4"
 mypy = "^0.971"
-pre-commit = {version = "^2.15.0", python = "^3.6.1"}
+pre-commit = "^3.8.0"
 pytest = "^6.2"
 pytest-cov = "^4.0.0"
+ruff = "^0.6.8"
 types-PyYAML = "^6.0.1"
 
 [tool.poetry.scripts]
@@ -34,25 +33,6 @@ swp = "sync_with_poetry.swp:main"
 addopts = "-svv"
 testpaths = ["tests"]
 
-[tool.black]
-exclude = '''
-/(
-    \.eggs
-  | \.git
-  | \.hg
-  | \.mypy_cache
-  | \.pytest_cache
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-  | tests/.*/setup.py
-)/
-'''
-include = '\.pyi?$'
-line-length = 88
-
 [tool.mypy]
 disallow_incomplete_defs = true
 disallow_untyped_defs = true
@@ -61,10 +41,12 @@ files = ["**/*.py"]
 namespace_packages = true
 show_error_codes = true
 
-[tool.isort]
-profile = "black"
-src_paths = ["sync_with_poetry", "tests"]
-
 [build-system]
 build-backend = "poetry.core.masonry.api"
 requires = ["poetry-core"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.format]
+docstring-code-format = true

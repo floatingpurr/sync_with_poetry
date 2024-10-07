@@ -49,9 +49,7 @@ assert len(TEST_REVS) == len(TEST_REVS_UNFROZEN) == len(TEST_REVS_FROZEN)
 
 
 def config_content(rev_line: str) -> str:
-    return (
-        "repos:\n" "  - repo: test\n" + rev_line + "    hooks:\n" "      - id: test\n"
-    )
+    return "repos:\n" "  - repo: test\n" + rev_line + "    hooks:\n" "      - id: test\n"
 
 
 LOCK_CONTENT = (
@@ -72,9 +70,7 @@ DEPENDENCY_MAPPING = {
 }
 
 
-def run_and_check(
-    tmpdir: LocalPath, rev_line: str, expected: str, frozen: bool
-) -> None:
+def run_and_check(tmpdir: LocalPath, rev_line: str, expected: str, frozen: bool) -> None:
     lock_file = tmpdir.join("poetry.lock")
     lock_file.write(LOCK_CONTENT)
     config_file = tmpdir.join(".pre-commit-yaml")

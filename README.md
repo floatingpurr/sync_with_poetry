@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/floatingpurr/sync_with_poetry/branch/main/graph/badge.svg?token=RNDNWATE25)](https://codecov.io/gh/floatingpurr/sync_with_poetry)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/floatingpurr/sync_with_poetry/main.svg)](https://results.pre-commit.ci/latest/github/floatingpurr/sync_with_poetry/main)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 A .pre-commit hook for keeping in sync the repos `rev` in
 `.pre-commit-config.yaml` with the packages version locked into `poetry.lock`.
@@ -19,10 +19,10 @@ framework.
 When it comes to Python dependency management,
 [Poetry](https://python-poetry.org/) is one of the modern solutions to handle
 project dependencies. [Sometimes](https://stackoverflow.com/q/70127649/4820341),
-you might want to install dev dependencies locally (e.g., `black`, `flake8`,
-`isort`, `mypy`, ...) to make your IDE (e.g., VS Code) play nicely with dev
-packages. This approach usually turns on a live feedback as you code (e.g.,
-suggestions, linting, formatting, errors highlighting). Poetry does not
+you might want to install dev dependencies locally (e.g., `ruff`, `black`,
+`flake8`, `isort`, `mypy`, ...) to make your IDE (e.g., VS Code) play nicely
+with dev packages. This approach usually turns on a live feedback as you code
+(e.g., suggestions, linting, formatting, errors highlighting). Poetry does not
 differentiates anymore between dev and production packages inside `poetry.lock`.
 Now, this info is managed by dependency groups in `pyproject.toml` (see
 [#26](https://github.com/floatingpurr/sync_with_poetry/issues/26) for more).

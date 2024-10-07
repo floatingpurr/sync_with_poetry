@@ -17,7 +17,7 @@ URL_REGEX = re.compile(
 def test_built_in_dependency_mapping() -> None:
     """Test the structure of the DEPENDENCY_MAPPING"""
     for item in DEPENDENCY_MAPPING:
-        assert type(item) == str
+        assert type(item) is str
         # chek url
         assert re.match(URL_REGEX, DEPENDENCY_MAPPING[item]["repo"])
         assert "${rev}" in DEPENDENCY_MAPPING[item]["rev"]
