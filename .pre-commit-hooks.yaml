@@ -3,4 +3,4 @@
   description: Automatically sync pre-commit repos with package versions in poetry.lock
   entry: swp
   language: python
-  files: poetry.lock
+  files: poetry\.lock$
