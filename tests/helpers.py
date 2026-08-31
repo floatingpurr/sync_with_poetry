@@ -1,5 +1,3 @@
-from typing import Optional
-
 import yaml
 
 # A lock file
@@ -83,7 +81,7 @@ CUSTOM_DEPENDENCY_MAPPING = {
 }
 
 
-def get_repo_version(filename: str, repo: str) -> Optional[str]:
+def get_repo_version(filename: str, repo: str) -> str | None:
     """Return the version (i.e., rev) of a repo
 
     Args:

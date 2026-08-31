@@ -1,8 +1,8 @@
 import argparse
 import json
 import re
+from collections.abc import Sequence
 from string import Template
-from typing import Dict, List, Optional, Sequence
 
 import yaml
 from tomlkit.items import AoT
@@ -17,14 +17,14 @@ REV_LINE_RE = re.compile(
 FROZEN_REV_RE = re.compile(r"[a-f\d]{40}")
 
 
-class PoetryItems(object):
+class PoetryItems:
     """A class to get and filter poetry.lock packages to sync in .pre-commit-config.yaml"""
 
     def __init__(
         self,
         poetry_list: AoT,
-        skip: List[str] = [],
-        db: Dict[str, Dict[str, str]] = DEPENDENCY_MAPPING,
+        skip: list[str] = [],
+        db: dict[str, dict[str, str]] = DEPENDENCY_MAPPING,
     ) -> None:
         """Create a PoetryItems collection
 
@@ -50,7 +50,7 @@ class PoetryItems(object):
                 rev = Template(dependency_mapping["rev"]).substitute(rev=package["version"])
                 self._poetry_lock[repo] = {"name": name, "rev": rev}
 
-    def get_by_repo(self, repo: str) -> Optional[Dict[str, str]]:
+    def get_by_repo(self, repo: str) -> dict[str, str] | None:
         """Get a PreCommitRepo given its url
 
         Args:
@@ -65,9 +65,9 @@ class PoetryItems(object):
 
 def sync_repos(
     filename: str,
-    skip: List[str] = [],
+    skip: list[str] = [],
     config: str = YAML_FILE,
-    db: Dict[str, Dict[str, str]] = DEPENDENCY_MAPPING,
+    db: dict[str, dict[str, str]] = DEPENDENCY_MAPPING,
     frozen: bool = False,
 ) -> int:
     retv = 0
@@ -128,7 +128,7 @@ def sync_repos(
     return retv
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:
+def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("filenames", nargs="*")
     # parser.add_argument(
