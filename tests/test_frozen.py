@@ -49,7 +49,7 @@ assert len(TEST_REVS) == len(TEST_REVS_UNFROZEN) == len(TEST_REVS_FROZEN)
 
 
 def config_content(rev_line: str) -> str:
-    return "repos:\n" "  - repo: test\n" + rev_line + "    hooks:\n" "      - id: test\n"
+    return "repos:\n  - repo: test\n" + rev_line + "    hooks:\n      - id: test\n"
 
 
 LOCK_CONTENT = (
